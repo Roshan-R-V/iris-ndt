@@ -1,0 +1,13 @@
+.card {
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Semi-transparent dark */
+    border-radius: 10px;
+    color: white;
+}
+
+.card-body, .card-footer {
+    background-color: transparent !important;
+}
+
+.card-img-top {
+    opacity: 0.8; /* Slightly transparent image */
+}
