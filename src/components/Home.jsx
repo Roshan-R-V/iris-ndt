@@ -8,8 +8,6 @@ const Home = () => (
         <Services />
         <Contact />
     </div>
-
-
 );
 
 export default Home;
