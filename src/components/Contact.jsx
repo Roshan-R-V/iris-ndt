@@ -1,23 +1,34 @@
 const Contact = () => (
-    <div id="contact" className="container d-flex justify-content-center align-items-center my-5" style={{ minHeight: "50vh" }}>
-        <div className="card p-4 shadow-lg bg-dark text-white" style={{ width: "24rem" }}>
-            <h2 className="text-center">Contact Us</h2>
-            <form className="mt-3">
-                <div className="mb-3">
-                    <input type="text" className="form-control" placeholder="Your Name" required />
+    <div id="contact" className="min-vh-100 container-fluid py-5 bg-black text-white">
+        <div className="container container-fluid">
+            <h2 className="mb-5 text-center text-white">Contact Us</h2>
+            <div className="row">
+                <div className="col-md-6 offset-md-3">
+                    <div className="card p-4 shadow-lg bg-dark text-white border-secondary">
+                        <form className="mt-3">
+                            <div className="mb-3">
+                                <p>Name</p>
+                                <input type="text" className="form-control bg-dark text-white border-secondary" placeholder="Your Name" required />
+                            </div>
+                            <div className="mb-3">
+                                <p>Email</p>
+                                <input type="email" className="form-control bg-dark text-white border-secondary"
+                                       placeholder="Your Email" required/>
+                            </div>
+                            <div className="mb-3">
+                                <p>Message</p>
+                                <textarea className="form-control bg-dark text-white border-secondary" rows="3" placeholder="Your Message" required></textarea>
+                            </div>
+                            <div className="text-center">
+                                <button className="btn btn-primary" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div className="mb-3">
-                    <input type="email" className="form-control" placeholder="Your Email" required />
-                </div>
-                <div className="mb-3">
-                    <textarea className="form-control" rows="3" placeholder="Your Message" required></textarea>
-                </div>
-                <div className="text-center">
-                    <button className="btn btn-primary" type="submit">Submit</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 );
+
 
 export default Contact;

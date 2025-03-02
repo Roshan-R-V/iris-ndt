@@ -1,7 +1,6 @@
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Style/Services.css";
-import {useEffect, useRef, useState} from "react"; // Ensure styles are applied
+import { useEffect, useRef, useState } from "react";
 
 const Services = () => {
     const scrollRef = useRef(null);
@@ -14,35 +13,24 @@ const Services = () => {
         { title: "Mechanical Failure Analysis", text: "Identifies root causes of material failure.", img: "src/assets/failure.png" }
     ];
 
-    // Calculate total number of slides
+    // Calculate total number of slides for desktop
     const totalSlides = services.length;
-    const cardsPerSlide = {
-        mobile: 1,
-        desktop: 3
-    };
-
-    // Calculate total pages based on viewport
-    const totalMobilePages = Math.ceil(totalSlides / cardsPerSlide.mobile);
-    const totalDesktopPages = Math.ceil(totalSlides / cardsPerSlide.desktop);
+    const desktopCardsPerSlide = 3;
+    const totalDesktopPages = Math.ceil(totalSlides / desktopCardsPerSlide);
 
     const scrollLeft = () => {
         setActiveIndex(prev => (prev > 0 ? prev - 1 : 0));
     };
 
     const scrollRight = () => {
-        setActiveIndex(prev => {
-            const isMobile = window.innerWidth < 768;
-            const maxIndex = isMobile ? totalMobilePages - 1 : totalDesktopPages - 1;
-            return prev < maxIndex ? prev + 1 : prev;
-        });
+        setActiveIndex(prev => (prev < totalDesktopPages - 1 ? prev + 1 : prev));
     };
 
     useEffect(() => {
         if (scrollRef.current) {
-            const isMobile = window.innerWidth < 768;
-            const cardWidth = isMobile ? scrollRef.current.offsetWidth : scrollRef.current.offsetWidth / 3;
+            const cardWidth = scrollRef.current.offsetWidth / 3;
             scrollRef.current.scrollTo({
-                left: activeIndex * cardWidth * (isMobile ? 1 : 3),
+                left: activeIndex * cardWidth * 3,
                 behavior: 'smooth'
             });
         }
@@ -71,7 +59,25 @@ const Services = () => {
             <div className="container">
                 <h2 className="mb-5 text-center text-white">Our Services</h2>
 
-                <div className="position-relative carousel-container">
+                {/* Mobile and iPad View (stacked cards) - visible on screens up to 991px */}
+                <div className="d-block d-lg-none">
+                    <div className="row g-4">
+                        {services.map((service, index) => (
+                            <div className="col-12 col-md-6" key={index}>
+                                <div className="card h-100 shadow-lg bg-dark text-white border-secondary">
+                                    <img src={service.img} className="card-img-top" alt={service.title} style={{ height: "200px", objectFit: "cover" }} />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{service.title}</h5>
+                                        <p className="card-text">{service.text}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Desktop View (carousel) - visible on screens 992px and up */}
+                <div className="d-none d-lg-block position-relative carousel-container">
                     {/* Navigation buttons */}
                     <button
                         className="btn btn-outline-light rounded-circle position-absolute start-0 top-50 translate-middle-y z-3"
@@ -87,32 +93,19 @@ const Services = () => {
                         ref={scrollRef}
                         style={{ scrollBehavior: 'smooth' }}
                     >
-                        {/* Mobile carousel (1 card per view) */}
-                        <div className="d-flex d-md-none">
+                        <div className="d-flex">
                             {services.map((service, index) => (
                                 <div
                                     className="card flex-shrink-0 mx-2 shadow-lg bg-dark text-white border-secondary"
-                                    style={{ width: "100%", minWidth: "calc(100% - 16px)" }}
+                                    style={{ width: "calc(33.333% )" }}
                                     key={index}
                                 >
-                                    <img src={service.img} className="card-img-top" alt={service.title} />
-                                    <div className="card-body">
-                                        <h5 className="card-title">{service.title}</h5>
-                                        <p className="card-text">{service.text}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Desktop carousel (3 cards per view) */}
-                        <div className="d-none d-md-flex">
-                            {services.map((service, index) => (
-                                <div
-                                    className="card flex-shrink-0 mx-2 shadow-lg bg-dark text-white border-secondary"
-                                    style={{ width: "calc(33.333% - 16px)" }}
-                                    key={index}
-                                >
-                                    <img src={service.img} className="card-img-top h-50" alt={service.title} />
+                                    <img
+                                        src={service.img}
+                                        className="card-img-top"
+                                        alt={service.title}
+                                        style={{ height: "400px", objectFit: "cover" }}
+                                    />
                                     <div className="card-body">
                                         <h5 className="card-title">{service.title}</h5>
                                         <p className="card-text">{service.text}</p>
@@ -125,29 +118,27 @@ const Services = () => {
                     <button
                         className="btn btn-outline-light rounded-circle position-absolute end-0 top-50 translate-middle-y z-3"
                         onClick={scrollRight}
-                        disabled={(window.innerWidth < 768 && activeIndex >= totalMobilePages - 1) ||
-                            (window.innerWidth >= 768 && activeIndex >= totalDesktopPages - 1)}
+                        disabled={activeIndex >= totalDesktopPages - 1}
                     >
                         &#9655;
                     </button>
-                </div>
 
-                {/* Pagination indicators */}
-                <div className="d-flex justify-content-center mt-4">
-                    {[...Array(window.innerWidth < 768 ? totalMobilePages : totalDesktopPages)].map((_, index) => (
-                        <button
-                            key={index}
-                            className={`btn btn-sm mx-1 ${activeIndex === index ? 'btn-light' : 'btn-outline-light'}`}
-                            style={{ width: '30px', height: '10px', padding: '0', borderRadius: '5px' }}
-                            onClick={() => setActiveIndex(index)}
-                        >
-                        </button>
-                    ))}
+                    {/* Pagination indicators */}
+                    <div className="d-flex justify-content-center mt-4">
+                        {[...Array(totalDesktopPages)].map((_, index) => (
+                            <button
+                                key={index}
+                                className={`btn btn-sm mx-1 ${activeIndex === index ? 'btn-light' : 'btn-outline-light'}`}
+                                style={{ width: '30px', height: '10px', padding: '0', borderRadius: '5px' }}
+                                onClick={() => setActiveIndex(index)}
+                            >
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
-
 
 export default Services;
