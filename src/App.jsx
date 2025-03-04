@@ -8,7 +8,7 @@ function App() {
         <Router>
             <div className="video-container content
             position-relative vh-100 d-flex bg-black">
-                <Navbar/>
+                {/*<Navbar/>*/}
                 {/*<Routes className="z-3">*/}
                 {/*    <Route path="/" element={<Home/>}/>*/}
                 {/*</Routes>*/}
