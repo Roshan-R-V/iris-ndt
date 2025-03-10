@@ -9,8 +9,18 @@ const Services = () => {
         { title: "Ultrasonic Testing", text: "High-frequency sound waves to detect flaws.", img: "src/assets/Ultrasonic.webp" },
         { title: "Radiographic Testing", text: "X-ray or gamma-ray to inspect materials.", img: "src/assets/radioghraphic.webp" },
         { title: "Magnetic Particle Inspection", text: "Detects surface and near-surface defects.", img: "src/assets/magnetic.webp" },
-        { title: "Visual Inspection", text: "Simple yet effective examination method.", img: "src/assets/visual.jpeg" },
-        { title: "Mechanical Failure Analysis", text: "Identifies root causes of material failure.", img: "src/assets/failure.png" }
+        // { title: "Visual Inspection", text: "Simple yet effective examination method.", img: "src/assets/visual.jpeg" },
+        { title: "Mechanical Failure Analysis", text: "Identifies root causes of material failure.", img: "src/assets/failure.png" },
+        { title: "Eddy Current Tube Inspection", text: "Rapid detection of damages like wall loss and pitting.", img: "src/assets/eddyCurrent.jpg" },
+        { title: "Phased Array UT", text: "Advanced ultrasonic testing for weld discontinuities.", img: "src/assets/phaseArray_2.jpg" },
+        { title: "Time-of-Flight Diffraction (TOFD)", text: "Efficient weld testing method.", img: "src/assets/TOFD.jpg"  },
+        { title: "Magnetic Flux Leakage", text: "Detects corrosion and pitting in steel structures.", img: "src/assets/fluxLeakage.webp"  },
+        { title: "Remote Field Electromagnetic Testing (RFET)", text: "Inspects ferromagnetic tubing.", img: "src/assets/RFET.jpg"  },
+        { title: "Internal Rotary Inspection System (IRIS)", text: "Ultrasonic technique for pipes and tubes inspection.", img: "src/assets/IRIS.jpeg"  },
+        { title: "Condenser Leak Testing", text: "Addresses efficiency concerns in power plants.", img: "src/assets/CondenserLeak.webp"  },
+        { title: "Fugitive Emission Testing", text: "Tests valves and fittings for emissions.", img: "src/assets/fugitiveTesting.jpg"  },
+        { title: "Cryogenic and Low-Temperature Testing", text: "Tests valves at controlled temperatures down to -196°C.", img: "src/assets/CryoLeak.jpg"  },
+        { title: "Helium Leak Testing", text: "Leak testing services across India and the Middle East.", img: "src/assets/healiumLeak2.jpg"  }
     ];
 
     // Calculate total number of slides for desktop
@@ -97,7 +107,7 @@ const Services = () => {
                             {services.map((service, index) => (
                                 <div
                                     className="card flex-shrink-0 mx-2 shadow-lg bg-dark text-white border-secondary"
-                                    style={{ width: "calc(33.333% )" }}
+                                    style={{ width: "calc(32% )" }}
                                     key={index}
                                 >
                                     <img

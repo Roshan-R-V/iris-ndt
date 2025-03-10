@@ -6,14 +6,14 @@ const Details = () => (
                 <div className="col-md-4">
                     <div className="h-100 p-4 bg-black rounded shadow-lg border border-secondary">
                         <h3 className="mb-4 fw-bold">IRIS NDT</h3>
-                        <p>Providing advanced non-destructive testing solutions since 2005. We deliver quality inspection services across various industries.</p>
+                        <p>Providing advanced non-destructive testing solutions since 2018. We deliver quality inspection services across various industries.</p>
                         <div className="mt-3">
                             <button className="btn btn-outline-light me-2">
-                                <i className="bi bi-facebook"></i>
+                                <i className="bi bi-whatsapp"></i>
                             </button>
-                            <button className="btn btn-outline-light me-2">
-                                <i className="bi bi-twitter"></i>
-                            </button>
+                            <a className="btn btn-outline-light me-2" href='mailto:roshanvivek3920@gmail.com' target="_blank">
+                                <i className="bi bi-envelope" ></i>
+                            </a>
                             <button className="btn btn-outline-light me-2">
                                 <i className="bi bi-linkedin"></i>
                             </button>
@@ -41,11 +41,11 @@ const Details = () => (
                                     <i className="bi bi-chevron-right me-2"></i>Contact
                                 </a>
                             </li>
-                            <li className="mb-2">
-                                <a href="#" className="text-decoration-none text-white">
-                                    <i className="bi bi-chevron-right me-2"></i>Privacy Policy
-                                </a>
-                            </li>
+                            {/*<li className="mb-2">*/}
+                            {/*    <a href="#" className="text-decoration-none text-white">*/}
+                            {/*        <i className="bi bi-chevron-right me-2"></i>Privacy Policy*/}
+                            {/*    </a>*/}
+                            {/*</li>*/}
                         </ul>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ const Details = () => (
                             </li>
                             <li className="mb-3 d-flex align-items-center">
                                 <i className="bi bi-telephone-fill me-3"></i>
-                                <span>+1 (800) 555-1234</span>
+                                <span>+91 93601 63895</span>
                             </li>
                             <li className="mb-3 d-flex align-items-center">
                                 <i className="bi bi-envelope-fill me-3"></i>
