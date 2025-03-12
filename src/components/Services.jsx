@@ -107,7 +107,7 @@ const Services = () => {
                             {services.map((service, index) => (
                                 <div
                                     className="card flex-shrink-0 mx-2 shadow-lg bg-dark text-white border-secondary"
-                                    style={{ width: "calc(32% )" }}
+                                    style={{ width: "calc(32.4% )" }}
                                     key={index}
                                 >
                                     <img
